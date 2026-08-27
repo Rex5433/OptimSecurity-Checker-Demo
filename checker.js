@@ -16,7 +16,13 @@ async function loadChecker() {
         ort.env.wasm.wasmPaths = "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/";
         const [characterMap, model] = await Promise.all([
             fetch("model/char_to_idx.json").then(response => response.json()),
-            ort.InferenceSession.create("model/password_model.onnx", { executionProviders: ["wasm"] })
+            ort.InferenceSession.create("model/password_model.onnx", { 
+                executionProviders: ["wasm"],
+                externalData: [{
+                    path: "password_model.onnx.data",
+                    data: "model/password_model.onnx.data"
+                }]
+            } )
         ]);
         charToIndex = characterMap;
         session = model;
