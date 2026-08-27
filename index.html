@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Checker | Optimsecurity</title>
+    <link rel="stylesheet" href="password_checker.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.min.js" defer></script>
+    <script src="checker.js" defer></script>
+</head>
+<body class="checker-body">
+    <div class="checker-shell">
+        <aside class="checker-sidebar">
+            <div class="checker-sidebar-title">
+                <img src="optimsecuritylogo.png" alt="Optimsecurity" class="checker-sidebar-logo">
+            </div>
+            <nav class="checker-nav">
+                <a href="#password-checker" class="checker-nav-item active">Password Check</a>
+                <div class="checker-sidebar-spacer"></div>
+            </nav>
+        </aside>
+
+        <main class="checker-main">
+            <section class="checker-hero-card">
+                <div class="checker-badge">Password Checker</div>
+                <h1>Check how secure your password really is</h1>
+                <p>This checker uses a CNN Machine Learning model to find out your password strength.</p>
+            </section>
+
+            <section id="password-checker" class="checker-grid">
+                <div class="checker-card">
+                    <div class="checker-card-header">
+                        <h2>Check a Password</h2>
+                        <p>Try examples like <strong>bettafish21</strong>, <strong>bettafi$21</strong>, or <strong>bettafi$h@21</strong>.</p>
+                    </div>
+                    <form id="checker-form" class="checker-form">
+                        <div class="checker-form-group">
+                            <div class="checker-label-row">
+                                <label for="password">Password</label>
+                                <span class="checker-char-count"><span id="password-count">0</span> characters long</span>
+                            </div>
+                            <input type="text" id="password" name="password" placeholder="Type a password here" autocomplete="off" required>
+                        </div>
+                        <div class="checker-button-row">
+                            <button type="submit" class="checker-btn">Check Password</button>
+                        </div>
+                    </form>
+                    <div id="checker-error" class="checker-message checker-error" hidden></div>
+                </div>
+
+                <div class="checker-card">
+                    <div class="checker-card-header">
+                        <h2>Result</h2>
+                        <p>Your CNN password rating is shown below.</p>
+                    </div>
+                    <div id="checker-empty" class="checker-empty">Submit a password to see the result here.</div>
+                    <div id="checker-result" class="checker-result-box" hidden>
+                        <div class="checker-result-top">
+                            <div>
+                                <div class="checker-result-title">Password Entered</div>
+                                <div id="result-password" class="checker-result-value"></div>
+                            </div>
+                            <span id="result-pill" class="checker-pill"></span>
+                        </div>
+                        <div class="checker-stats-row">
+                            <div class="checker-stat-box">
+                                <span class="checker-stat-label">Strength</span>
+                                <span id="result-strength" class="checker-stat-value"></span>
+                            </div>
+                            <div class="checker-stat-box">
+                                <span class="checker-stat-label">Password Length</span>
+                                <span id="result-length" class="checker-stat-value"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="checker-card">
+                <div class="checker-card-header">
+                    <h2>How This Checker Rates Passwords</h2>
+                    <p>These are the general ideas used when assigning a final rating.</p>
+                </div>
+                <div class="checker-tips-grid">
+                    <div class="checker-tip-box"><h3>Weak</h3><p>Common words, simple patterns, and obvious endings usually keep a password weak.</p></div>
+                    <div class="checker-tip-box"><h3>Average</h3><p>Better variation and length help, but the password may still be somewhat predictable.</p></div>
+                    <div class="checker-tip-box"><h3>Strong</h3><p>Strong passwords are longer, less obvious, and use a better mix of characters and structure.</p></div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
